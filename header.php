@@ -36,6 +36,15 @@ if (file_exists($infrastrukt_topbar)):
 	require( $infrastrukt_topbar );
 endif;
 ?>
+<?php
+/**
+ * SETUP OFF-CANVAS CUSTOMIZATION INCLUDE
+ */
+$infrastrukt_offcanvas = trailingslashit( get_template_directory() ) . 'inc/offcanvas.php';
+if (file_exists($infrastrukt_offcanvas)):
+	require( $infrastrukt_offcanvas );
+endif;
+?>
 <div class="nav-wrapper <?php echo $topbar_classes;?>">
 	<nav class="top-bar" data-topbar data-options="is_hover:<?php echo $topbar_hover;?>">
 		<ul class="title-area">
