@@ -513,6 +513,51 @@ add_action('customize_register', 'infrastrukt_customize');
 endif;
 
 /**
+ * COPYRIGHT CODE
+ */
+function copyright_customizer( $wp_customize ) {
+    $wp_customize->add_section(
+        'copyright_section',
+        array(
+            'title' => 'Copyright',
+            'description' => 'Customize copyright text in footer.',
+            'priority' => 40,
+        )
+    );
+
+	$wp_customize->add_setting(
+	    'copyright_textbox',
+	    array(
+	        'default' => 'Default copyright text',
+	    )
+	);
+
+	$wp_customize->add_control(
+	    'copyright_textbox',
+	    array(
+	        'label' => 'Copyright text',
+	        'section' => 'copyright_section',
+	        'type' => 'text',
+	    )
+	);
+
+	$wp_customize->add_setting(
+	    'hide_copyright'
+	);
+
+	$wp_customize->add_control(
+	    'hide_copyright',
+	    array(
+	        'type' => 'checkbox',
+	        'label' => 'Hide copyright text',
+	        'section' => 'copyright_section',
+	    )
+	);
+
+}
+add_action( 'customize_register', 'copyright_customizer' );
+
+/**
  * INFRASTRUKT RESOURCE LOADER
  */
 

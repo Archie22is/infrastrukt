@@ -55,6 +55,14 @@
 
 <?php } ?>
 
+<?php if( get_theme_mod( 'hide_copyright' ) == '') { ?>
+<div class="large-12 columns">
+        <div class="copyright">
+                <p>&copy; <?php echo date('Y'); ?> <?php echo get_theme_mod( 'copyright_textbox', 'No copyright information has been saved yet.' ); ?></p>
+        </div><!--.copyright-->
+</div>
+<?php } // end if ?>
+
 </footer><!-- End Footer -->
 </div><!--.inner-wrap-->
 </div><!--.off-canvas-wrap-->
