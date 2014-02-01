@@ -447,9 +447,34 @@ if ( ! function_exists( 'infrastrukt_customize' ) ) :
 
 function infrastrukt_customize($wp_customize) {
 
+	// BEGIN INFRASTRUKT MENU TYPE
+	$wp_customize->add_section( 'infrastrukt_menu_type', array(
+		'title'          => __( 'Menu Type', 'infrastrukt' ),
+		'priority'       => 34,
+	) );
+
+	$wp_customize->add_setting( 'menu_type', array(
+		'default'        => 'default',
+		'type'           => 'theme_mod',
+	    'capability'     => 'edit_theme_options',
+	    //'transport'      => 'postMessage',
+	) );
+
+	$wp_customize->add_control( 'menu_type', array(
+	    'label'      => __( 'Menu Type', 'infrastrukt' ),
+	    'section'    => 'infrastrukt_menu_type',
+	    'settings'   => 'menu_type',
+	    'type'       => 'radio',
+	    'choices'    => array(
+	        'topbar' => 'Top Bar',
+	        'offcanvas' => 'Off-Canvas',
+	        ),
+	) );
+
+	// BEGIN TOPBAR
 	$wp_customize->add_section( 'infrastrukt_topbar_settings', array(
 		'title'          => __( 'Top Bar Settings', 'infrastrukt' ),
-		'priority'       => 35,
+		'priority'       => 36,
 	) );
 
 	$wp_customize->add_setting( 'topbar_position', array(
@@ -459,7 +484,7 @@ function infrastrukt_customize($wp_customize) {
 	) );
 
 	$wp_customize->add_control( 'topbar_position', array(
-	    'label'      => __( 'Top Bar Position', 'themename' ),
+	    'label'      => __( 'Top Bar Position', 'infrastrukt' ),
 	    'section'    => 'infrastrukt_topbar_settings',
 	    'settings'   => 'topbar_position',
 	    'type'       => 'radio',
@@ -506,6 +531,68 @@ function infrastrukt_customize($wp_customize) {
 		'section' => 'infrastrukt_topbar_settings',
 		'type'    => 'text',
 	) );
+
+	// BEGIN OFFCANVAS
+	$wp_customize->add_section( 'infrastrukt_offcanvas_settings', array(
+		'title'          => __( 'Off-Canvas Settings', 'infrastrukt' ),
+		'priority'       => 37,
+	) );
+
+	$wp_customize->add_setting( 'offcanvas_position', array(
+		'default'        => 'default',
+		'type'           => 'theme_mod',
+	    'capability'     => 'edit_theme_options',
+	) );
+
+	$wp_customize->add_control( 'offcanvas_position', array(
+	    'label'      => __( 'Off-Canvas Menu Position', 'infrastrukt' ),
+	    'section'    => 'infrastrukt_offcanvas_settings',
+	    'settings'   => 'offcanvas_position',
+	    'type'       => 'radio',
+	    'choices'    => array(
+	        'left' => 'Left',
+	        'right' => 'Right',
+	        'both' => 'Both',
+	        ),
+	) );
+
+	$wp_customize->add_setting( 'offcanvas_2', array(
+		'default'        => '',
+		'type'           => 'theme_mod',
+	    'capability'     => 'edit_theme_options',
+	) );
+
+	$wp_customize->add_control( 'offcanvas_2', array(
+		'label'   => 'Contain To Grid',
+		'section' => 'infrastrukt_offcanvas_settings',
+		'type'    => 'checkbox',
+		'value'    => 'contain_to_grid',
+	) );
+
+	$wp_customize->add_setting( 'offcanvas_3', array(
+		'default'        => '',
+		'type'           => 'theme_mod',
+	    'capability'     => 'edit_theme_options',
+	) );
+
+	$wp_customize->add_control( 'offcanvas_3', array(
+		'label'   => 'Clickable Top Bar',
+		'section' => 'infrastrukt_offcanvas_settings',
+		'type'    => 'checkbox',
+	) );
+
+	$wp_customize->add_setting( 'offcanvas_4', array(
+		'default'        => 'Menu',
+		'type'           => 'theme_mod',
+	    'capability'     => 'edit_theme_options',
+	) );
+
+	$wp_customize->add_control( 'offcanvas_4', array(
+		'label'   => 'Set Menu Title',
+		'section' => 'infrastrukt_offcanvas_settings',
+		'type'    => 'text',
+	) );
+
 
 }
 
